@@ -1,4 +1,6 @@
-package hiber.service;
+/*
+p*/
+/*ackage hiber.service;
 
 import hiber.model.Car;
 
@@ -8,3 +10,4 @@ public interface CarService {
     void add(Car car);
     List<Car> listCars();
 }
+*/

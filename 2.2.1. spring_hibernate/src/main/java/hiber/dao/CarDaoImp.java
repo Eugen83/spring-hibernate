@@ -1,3 +1,4 @@
+/*
 package hiber.dao;
 import hiber.model.Car;
 import hiber.model.User;
@@ -25,4 +26,4 @@ public class CarDaoImp implements CarDao {
         TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car");
         return query.getResultList();
     }
-}
+}*/

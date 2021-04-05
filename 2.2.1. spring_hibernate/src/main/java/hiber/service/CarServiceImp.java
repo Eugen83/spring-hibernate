@@ -1,3 +1,4 @@
+/*
 package hiber.service;
 
 import hiber.dao.CarDao;
@@ -26,3 +27,4 @@ public class CarServiceImp implements CarService{
         return carDao.listCars();
     }
 }
+*/
