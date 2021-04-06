@@ -17,12 +17,23 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
+   /*   Car car1 = new Car("model1",11);
+      Car car2 =new Car("model2",22);
+      Car car3 = new Car("model3",33);
+      Car car4 =  new Car("model4",44);
+      Car car5 = new Car("model5",55);*/
 
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru", new Car("model1",11)));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru", new Car("model2",22)));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru", new Car("model3",33)));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru", new Car("model4",44)));
-      userService.add(new User("User5", "LastName5", "user5@mail.ru",new Car("model5",55)));
+      userService.add(new User("User1", "Lastname1", "user1@mail.ru",
+              new Car("model1", 11)));
+      userService.add(new User("User2", "Lastname2", "user2@mail.ru",
+              new Car("model2",22)));;
+      userService.add(new User("User3", "Lastname3", "user3@mail.ru",
+              new Car("model3", 33)));
+      userService.add(new User("User4", "Lastname4", "user4@mail.ru",
+              new Car("model4",44)));
+      userService.add(new User("User5", "LastName5", "user5@mail.ru",
+              new Car("model5",55)));
+
 
 /*      CarService carService = context.getBean(CarService.class);
       carService.add(new Car("model1",11));

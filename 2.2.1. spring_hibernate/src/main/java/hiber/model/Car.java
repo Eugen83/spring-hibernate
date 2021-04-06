@@ -18,7 +18,8 @@ public class Car {
     @Column (name = "series")
     private int series;
 
-    @OneToOne(optional = false, mappedBy="car")
+
+    @OneToOne(optional = false, mappedBy = "car")
     private User user;
 
     public Car(){}
@@ -26,6 +27,7 @@ public class Car {
     public Car(String model, int series){
         this.model = model;
         this.series = series;
+
     }
 
     public long getId() {
