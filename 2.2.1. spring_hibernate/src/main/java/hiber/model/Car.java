@@ -1,15 +1,17 @@
 package hiber.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 
 
 @Entity
-@Table(name = "cars")
+@Table(name = "car")
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
 
     @Column (name = "model")
@@ -19,8 +21,16 @@ public class Car {
     private int series;
 
 
-    @OneToOne(optional = false, mappedBy = "car")
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Car(){}
 
@@ -33,6 +43,7 @@ public class Car {
     public long getId() {
         return id;
     }
+
 
     public void setId(long id) {
         this.id = id;
@@ -55,14 +66,6 @@ public class Car {
     }
 
 
-
-   public void setUser(User user) {
-        this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-   }
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@ import hiber.model.Car;
 import hiber.model.User;
 //import hiber.service.CarService;
 import hiber.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
@@ -15,24 +16,32 @@ public class MainApp {
       AnnotationConfigApplicationContext context = 
             new AnnotationConfigApplicationContext(AppConfig.class);
 
+
       UserService userService = context.getBean(UserService.class);
 
-   /*   Car car1 = new Car("model1",11);
-      Car car2 =new Car("model2",22);
-      Car car3 = new Car("model3",33);
-      Car car4 =  new Car("model4",44);
-      Car car5 = new Car("model5",55);*/
+/*   new Car("model1",11);
+      new Car("model2",22);
+       = new Car("model3",33);
+       =  new Car("model4",44);
+      new Car("model5",55);*/
 
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru",
-              new Car("model1", 11)));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru",
-              new Car("model2",22)));;
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru",
-              new Car("model3", 33)));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru",
-              new Car("model4",44)));
-      userService.add(new User("User5", "LastName5", "user5@mail.ru",
-              new Car("model5",55)));
+
+   /*     userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
+        userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
+        userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
+        userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+        userService.add(new User("User5", "LastName5", "user5@mail.ru"));*/
+
+        User userI = new User("Ivan", "Ivanov","Ivanov@mail.ru");
+        User userP = new User("Petr","Petrov","Petya@mail.ru");
+
+        Car carI = new Car("VAZ",2101);
+        Car carP = new Car("BMW", 325);
+
+        userI.setCar(carI);
+        userP.setCar(carP);
+        userService.add(userI);
+        userService.add(userP);
 
 
 /*      CarService carService = context.getBean(CarService.class);
@@ -44,11 +53,12 @@ public class MainApp {
 
       List<User> users = userService.listUsers();
       for (User user : users) {
+
          System.out.println("Id = "+user.getId());
          System.out.println("First Name = "+user.getFirstName());
          System.out.println("Last Name = "+user.getLastName());
          System.out.println("Email = "+user.getEmail());
-         System.out.println("Car = " + user.getCar());
+       // System.out.println("Car = " + user.getCar());
          System.out.println();
       }
 

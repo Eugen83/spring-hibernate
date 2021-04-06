@@ -6,6 +6,6 @@ import hiber.model.User;
 import java.util.List;
 
 public interface UserService {
-    Car add(User user);
+    void add(User user);
     List<User> listUsers();
 }
