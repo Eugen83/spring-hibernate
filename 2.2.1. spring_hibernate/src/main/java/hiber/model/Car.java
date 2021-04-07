@@ -3,7 +3,7 @@ package hiber.model;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-
+import java.util.Objects;
 
 
 @Entity
@@ -35,6 +35,7 @@ public class Car {
     public Car(){}
 
     public Car(String model, int series){
+
         this.model = model;
         this.series = series;
 
@@ -65,6 +66,24 @@ public class Car {
         this.series = series;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (series != car.series) return false;
+        return model != null ? model.equals(car.model) : car.model == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = model != null ? model.hashCode() : 0;
+        result = 31 * result + series;
+        return result;
+    }
 
 
     @Override

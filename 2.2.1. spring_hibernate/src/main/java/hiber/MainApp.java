@@ -12,64 +12,58 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MainApp {
-   public static void main(String[] args) throws SQLException {
-      AnnotationConfigApplicationContext context = 
-            new AnnotationConfigApplicationContext(AppConfig.class);
+    public static void main(String[] args) throws SQLException {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(AppConfig.class);
 
 
-      UserService userService = context.getBean(UserService.class);
+        UserService userService = context.getBean(UserService.class);
+        userService.truncateUsersTable();
+        userService.truncateCarTable();
 
-/*   new Car("model1",11);
-      new Car("model2",22);
-       = new Car("model3",33);
-       =  new Car("model4",44);
-      new Car("model5",55);*/
+/*   Car car1= new Car("model1",11);
+      Car car2 = new Car("model2",22);
+      Car car3 = new Car("model3",33);
+       Car car4 =  new Car("model4",44);
+      Car car5 = new Car("model5",55);*/
 
 
-   /*     userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
+   /*     userService.add(new User("User1", "Lastname1", "user1@mail.ru").setCar(car1);
         userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
         userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
         userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
         userService.add(new User("User5", "LastName5", "user5@mail.ru"));*/
 
-        User userI = new User("Ivan", "Ivanov","Ivanov@mail.ru");
-        User userP = new User("Petr","Petrov","Petya@mail.ru");
+        User userI = new User("Ivan", "Ivanov", "Ivanov@mail.ru");
+        User userP = new User("Petr", "Petrov", "Petya@mail.ru");
+        User userS = new User("Sergey", "Sergeev", "seryi@gmail.com");
 
-        Car carI = new Car("VAZ",2101);
-        Car carP = new Car("BMW", 325);
+        Car carIv = new Car("VAZ", 2101);
+        Car carPt = new Car("BMW", 325);
+        Car carSr = new Car("McLaren F", 1);
 
-        userI.setCar(carI);
-        userP.setCar(carP);
+        userI.setCar(carIv);
+        userP.setCar(carPt);
+        userS.setCar(carSr);
+
         userService.add(userI);
         userService.add(userP);
+        userService.add(userS);
+
+        List<User> users = userService.listUsers();
+        for (User user : users) {
+
+            System.out.println("Id = " + user.getId());
+            System.out.println("First Name = " + user.getFirstName());
+            System.out.println("Last Name = " + user.getLastName());
+            System.out.println("Email = " + user.getEmail());
+            System.out.println("Car = " + user.getCar());
+            System.out.println();
+        }
+
+        System.out.println(userService.getCarsUser("McLaren F",1));
 
 
-/*      CarService carService = context.getBean(CarService.class);
-      carService.add(new Car("model1",11));
-      carService.add(new Car("model2",22));
-      carService.add(new Car("model3",33));
-      carService.add(new Car("model4",44));
-      carService.add(new Car("model5", 55));*/
-
-      List<User> users = userService.listUsers();
-      for (User user : users) {
-
-         System.out.println("Id = "+user.getId());
-         System.out.println("First Name = "+user.getFirstName());
-         System.out.println("Last Name = "+user.getLastName());
-         System.out.println("Email = "+user.getEmail());
-       // System.out.println("Car = " + user.getCar());
-         System.out.println();
-      }
-
-/*      List<Car> cars = carService.listCars();
-      for (Car car : cars) {
-         System.out.println("Id = "+car.getId());
-         System.out.println("Model = "+car.getModel());
-         System.out.println("Series = "+car.getSeries());
-         System.out.println();
-      }*/
-
-      context.close();
-   }
+        context.close();
+    }
 }

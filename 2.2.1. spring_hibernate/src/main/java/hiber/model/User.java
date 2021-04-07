@@ -31,6 +31,22 @@ public class User {
       this.email = email;
    }
 
+   public User(Long id, String firstName, String lastName, String email, Car car) {
+      this.id = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.car = car;
+
+   }
+
+   public User(Long id, String firstName, String lastName, String email) {
+      this.id = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+   }
+
    public Long getId() {
       return id;
    }
@@ -71,5 +87,14 @@ public class User {
       return car;
  }
 
-
+   @Override
+   public String toString() {
+      return "User{" +
+              "id=" + id +
+              ", firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", email='" + email + '\'' +
+              ", car=" + car +
+              '}';
+   }
 }
