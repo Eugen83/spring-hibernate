@@ -53,24 +53,16 @@ public class UserDaoImp implements UserDao {
     @Override
     @Transactional
     public User getCarsUser(String model, int series) {
-        TypedQuery<Car> seekedCarQuery = sessionFactory.getCurrentSession().createQuery
-                ("from Car where model = :model and series = :series")
+
+        TypedQuery<User> seekedUserQuery = sessionFactory.getCurrentSession().createQuery
+                ("from User where car.model = :model and car.series = :series")
                 .setParameter("model", model)
                 .setParameter("series", series);
-        List<Car> seekedCarList = seekedCarQuery.getResultList();
-        if (!seekedCarList.isEmpty()) {
-            Car seekedCar = seekedCarList.get(0);
-            List<User> userList = listUsers();
-            User seekedUser = null;
-            for (User user : userList) {
-                if (user.getCar().equals(seekedCar)) {
-                    seekedUser = user;
-                    break;
-                }
-            }
+        List<User> seekedUserList = seekedUserQuery.getResultList();
+        if (!seekedUserList.isEmpty()) {
+            User seekedUser = seekedUserList.get(0);
             return seekedUser;
-        }
-        return null;
+        } else return null;
     }
 
 }

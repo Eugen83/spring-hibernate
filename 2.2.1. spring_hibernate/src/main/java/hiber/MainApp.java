@@ -61,7 +61,7 @@ public class MainApp {
             System.out.println();
         }
 
-        System.out.println(userService.getCarsUser("McLaren F",1));
+        System.out.println(userService.getCarsUser("BMW",325));
 
 
         context.close();
