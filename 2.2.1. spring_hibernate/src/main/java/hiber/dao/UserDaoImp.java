@@ -54,15 +54,14 @@ public class UserDaoImp implements UserDao {
     @Transactional
     public User getCarsUser(String model, int series) {
 
-        TypedQuery<User> seekedUserQuery = sessionFactory.getCurrentSession().createQuery
+        List<User> seekedUserList = sessionFactory.getCurrentSession().createQuery
                 ("from User where car.model = :model and car.series = :series")
                 .setParameter("model", model)
-                .setParameter("series", series);
-        List<User> seekedUserList = seekedUserQuery.getResultList();
-        if (!seekedUserList.isEmpty()) {
-            User seekedUser = seekedUserList.get(0);
-            return seekedUser;
-        } else return null;
+                .setParameter("series", series)
+                .getResultList();
+         if (!seekedUserList.isEmpty()) {
+            return seekedUserList.get(0);
+         } else return null;
     }
 
 }

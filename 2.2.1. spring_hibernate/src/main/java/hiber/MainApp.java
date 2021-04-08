@@ -21,18 +21,6 @@ public class MainApp {
         userService.truncateUsersTable();
         userService.truncateCarTable();
 
-/*   Car car1= new Car("model1",11);
-      Car car2 = new Car("model2",22);
-      Car car3 = new Car("model3",33);
-       Car car4 =  new Car("model4",44);
-      Car car5 = new Car("model5",55);*/
-
-
-   /*     userService.add(new User("User1", "Lastname1", "user1@mail.ru").setCar(car1);
-        userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-        userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-        userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
-        userService.add(new User("User5", "LastName5", "user5@mail.ru"));*/
 
         User userI = new User("Ivan", "Ivanov", "Ivanov@mail.ru");
         User userP = new User("Petr", "Petrov", "Petya@mail.ru");
@@ -61,7 +49,7 @@ public class MainApp {
             System.out.println();
         }
 
-        System.out.println(userService.getCarsUser("BMW",325));
+        System.out.println(userService.getCarsUser("VAZ",2101));
 
 
         context.close();
