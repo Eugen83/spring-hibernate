@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
+@Transactional
 public class UserDaoImp implements UserDao {
 
     @Autowired
@@ -30,8 +31,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @Transactional
-    // @SuppressWarnings("unchecked")
+
     public void truncateUsersTable() {
         List<User> users = listUsers();
         for (User user : users) {
@@ -40,7 +40,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @Transactional
+
     public void truncateCarTable() {
         TypedQuery<Car> carQuery = sessionFactory.getCurrentSession().createQuery("from Car");
         List<Car> carList = carQuery.getResultList();
@@ -51,7 +51,7 @@ public class UserDaoImp implements UserDao {
 
 
     @Override
-    @Transactional
+
     public User getCarsUser(String model, int series) {
 
         List<User> seekedUserList = sessionFactory.getCurrentSession().createQuery
